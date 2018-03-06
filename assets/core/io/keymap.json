@@ -1,0 +1,194 @@
+[
+  {
+    "keycode": 41,
+    "key": "`"
+  },
+  {
+    "keycode": 2,
+    "key": "1"
+  },
+  {
+    "keycode": 3,
+    "key": "2"
+  },
+  {
+    "keycode": 4,
+    "key": "3"
+  },
+  {
+    "keycode": 5,
+    "key": "4"
+  },
+  {
+    "keycode": 6,
+    "key": "5"
+  },
+  {
+    "keycode": 7,
+    "key": "6"
+  },
+  {
+    "keycode": 8,
+    "key": "7"
+  },
+  {
+    "keycode": 9,
+    "key": "8"
+  },
+  {
+    "keycode": 10,
+    "key": "9"
+  },
+  {
+    "keycode": 11,
+    "key": "0"
+  },
+  {
+    "keycode": 12,
+    "key": "-"
+  },
+  {
+    "keycode": 13,
+    "key": "="
+  },
+  {
+    "keycode": 16,
+    "key": "q"
+  },
+  {
+    "keycode": 17,
+    "key": "w"
+  },
+  {
+    "keycode": 18,
+    "key": "e"
+  },
+  {
+    "keycode": 19,
+    "key": "r"
+  },
+  {
+    "keycode": 20,
+    "key": "t"
+  },
+  {
+    "keycode": 21,
+    "key": "y"
+  },
+  {
+    "keycode": 22,
+    "key": "u"
+  },
+  {
+    "keycode": 23,
+    "key": "i"
+  },
+  {
+    "keycode": 24,
+    "key": "o"
+  },
+  {
+    "keycode": 25,
+    "key": "p"
+  },
+  {
+    "keycode": 26,
+    "key": "["
+  },
+  {
+    "keycode": 27,
+    "key": "]"
+  },
+  {
+    "keycode": 43,
+    "key": "\\"
+  },
+  {
+    "keycode": 30,
+    "key": "a"
+  },
+  {
+    "keycode": 31,
+    "key": "s"
+  },
+  {
+    "keycode": 32,
+    "key": "d"
+  },
+  {
+    "keycode": 33,
+    "key": "f"
+  },
+  {
+    "keycode": 34,
+    "key": "g"
+  },
+  {
+    "keycode": 35,
+    "key": "h"
+  },
+  {
+    "keycode": 36,
+    "key": "j"
+  },
+  {
+    "keycode": 37,
+    "key": "k"
+  },
+  {
+    "keycode": 38,
+    "key": "l"
+  },
+  {
+    "keycode": 39,
+    "key": ";"
+  },
+  {
+    "keycode": 40,
+    "key": ""
+  },
+  {
+    "keycode": 44,
+    "key": "z"
+  },
+  {
+    "keycode": 45,
+    "key": "x"
+  },
+  {
+    "keycode": 46,
+    "key": "c"
+  },
+  {
+    "keycode": 47,
+    "key": "v"
+  },
+  {
+    "keycode": 48,
+    "key": "b"
+  },
+  {
+    "keycode": 49,
+    "key": "n"
+  },
+  {
+    "keycode": 50,
+    "key": "m"
+  },
+  {
+    "keycode": 51,
+    "key": ","
+  },
+  {
+    "keycode": 52,
+    "key": "."
+  },
+  {
+    "keycode": 53,
+    "key": "/"
+  },
+  {
+    "keycode": 57,
+    "key": " "
+  }
+]

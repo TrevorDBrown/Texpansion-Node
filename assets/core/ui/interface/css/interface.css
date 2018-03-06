@@ -1,0 +1,86 @@
+/*
+  Texpansion
+  (c)2018 Trevor D. Brown
+
+  interface.css - styling for the interface page.
+
+*/
+
+body{
+  background-color:  #b01e24;
+  font-family: sans-serif;
+}
+
+a{
+  text-decoration: none;
+}
+
+#top{
+  text-align: center;
+  text-shadow: 2px 2px black;
+  color: white;
+}
+
+.content, footer{
+  background: white;
+  width: 75%;
+  border-style: solid;
+  border-radius: 20px;
+  border-color: white;
+  box-shadow: 4px 4px #000000;
+  margin: 0px auto 10px auto;
+}
+
+footer{
+  height: 20px;
+  text-align: center;
+}
+
+/* New Snippet Entry Section*/
+#new_entry_section, #all_snippets_section, #prefs_section{
+  margin: 5px;
+  padding: 5px;
+}
+
+#snippet_id_section, #snippet_content_section{
+  margin: 5px;
+  vertical-align: text-top;
+}
+
+#snippet_id, #snippet_content{
+  width: 100%;
+  margin: 0px auto;
+}
+
+#add_new_snippet{
+  width: 100%;
+  margin: 0px auto;
+}
+
+/* All Snippets Section */
+#all_snippets{
+  width: 100%;
+}
+
+#snippets_table{
+  width: 100%;
+}
+
+#snippets_table > th, #snippets_table > td{
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+
+#snippets_table > thead{
+  background-color: #b01e24;
+  color: white;
+}
+
+#new_entry_form{
+  padding: 5px;
+}
+
+#snippet{
+  width: 200px;
+  height: 50px;
+}
