@@ -2,7 +2,7 @@
 A text expanding utility for macOS, Windows, and Linux.
 
 ## Prerequisites
-Texpansion requires Node.js to run.
+Texpansion requires Node.js 9.7.1 or higher to run.
  
 ## Installation
 Coming soon...
