@@ -60,7 +60,7 @@ var addSnippetToFile = function AddSnippetToFile(new_snippet){
       //console.log(obj);
       var json = JSON.stringify(obj);
       fs.writeFileSync(path.join(__dirname + '/../../content', "snippets.json"), json);
-      console.log(snippet_id + " has been added.");
+      console.log(new_snippet.id + " has been added.");
     }
   });
 };
