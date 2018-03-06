@@ -11,6 +11,15 @@ To install Texpansion on your system:
 - Run `npm install`
 - Run `node .`
 
+## Usage
+To manage snippets, visit [http://localhost:3000/texpansion](http://localhost:3000/texpansion)
+
+To use a snippet:
+- Press Ctrl+Alt+Command (macOS), or Ctrl+Alt+Win (Windows, Linux), once to begin listening.
+- Enter the snippet ID.
+- Press Ctrl+Alt+Command (macOS), or Ctrl+Alt+Win (Windows, Linux), to end listening.
+- The snippet ID should be erased and the snippet should be typed.
+
 ## Support
 As on 3/6/2018, Texpansion has been tested in macOS. It is assumed that Windows and Linux work as well, but I can't verify this until I've tested them.
 
