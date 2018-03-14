@@ -31,7 +31,7 @@ Texpansion uses the following npm packages:
   - Allows for the replacement of text.
 - [iohook](https://github.com/WilixLead/iohook) 
   - Allows for the interpretation of keystrokes.
-- [Express.js] (https://github.com/expressjs/express)
+- [Express.js](https://github.com/expressjs/express)
   - Provides the app interface, for adding, removing, and modifying snippets.
 - [Opn](https://github.com/sindresorhus/opn)
   - Allows Node.js to start system processes (i.e. open the UI in browser on launch)
