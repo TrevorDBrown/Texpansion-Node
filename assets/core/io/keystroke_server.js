@@ -14,7 +14,7 @@ const io = require('iohook');
 const snippet_server = require('./../snippets/snippet_server.js');
 
 // JSON files
-var keymap = require('./keymap.json');  // Keymap file
+var keymap = require('./mac_keymap.json');  // Keymap file
 
 // Global variables
 var listening_active = false;
