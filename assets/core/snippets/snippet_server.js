@@ -1,101 +1,152 @@
 /*
   Texpansion
-  (c)2018 Trevor D. Brown.
+  (c)2018 Trevor D. Brown. All rights reserved.
 
-  keystroke_server.js - provides an interface for listening to keystrokes
+  snippet_server.js - provides an interface for adding, removing, modifying, and printing user snippets.
+
+  Uses Robots.js to perform replacements on text.
 
   Packages used:
-  IOHook (https://www.npmjs.com/package/iohook, https://github.com/WilixLead/iohook)
+  RobotJS (http://robotjs.io/, https://www.npmjs.com/package/robotjs, https://github.com/octalmage/robotjs)
 */
 
-// Other JS files and npm packages
-'use strict';
-const io = require('iohook');
-const snippet_server = require('./../snippets/snippet_server.js');
+// Required packages
+const fs = require('fs');         // Node.js File System
+const path = require('path');     // Node.js Path
+const robot = require('robotjs'); // Robot.js
 
-// JSON files
-var mac_keymap = require('./mac_keymap.json');  // Mac keymap file
-//var win_keymap = require('./win_keymap.json'); // Windows keymap file
 
-// Global variables
-var listening_active = false;
-var current_snippet_id = "";
+// getSnippetsFile() - retrieves the entire snippets file from disk.
+var getSnippetsFile = function getSnippetsFile(){
+  return JSON.parse(fs.readFileSync(path.join(__dirname + '/../../content', "snippets.json"), 'utf8'));
+};
 
-io.on("keydown", key => {
-  if (listening_active == true){
-    var keyExists = validateKey(key.keycode, mac_keymap);
-    if (keyExists == true){
-      var current_character = convertKeyCodeToValue(key.keycode, mac_keymap);
-      current_snippet_id += current_character;
-    }
-  }
-});
+// doesSnippetExist(snippet_id) - checks a provided snippet ID against the snippets file.
+var doesSnippetExist = function doesSnippetExist(snippet_id){
+  var current_snippet = findSnippet(snippet_id);
 
-// Shortcut to enable listening
-let id = io.registerShortcut([29, 56, 3675], (keys) => {
-  if (listening_active == false){
-    listening_active = true;
-    console.log('Listening for key combinations...');
+  if (current_snippet != ""){
+    return true;
   }
   else{
-    listening_active = false;
-    console.log('Stopped listening!');
+    return false;
+  }
 
-    if (current_snippet_id != ""){
-      console.log("Input is:", current_snippet_id);
+};
 
-      if (snippet_server.doesSnippetExist(current_snippet_id) == true){
-        snippet_server.printSnippet(current_snippet_id);
-      }
-      else{
-        console.log("Error: Snippet does not exist!")
-      }
+// findSnippet(snippet_id, snippets_file) - finds a particular snippet in the snippet file.
+var findSnippet = function findSnippet(snippet_id){
+  var snippets_file = getSnippetsFile();
+  var theSnippet = "";
 
+  for (var i = 0; i < snippets_file.length; i++){
+    if (snippets_file[i].id == snippet_id){
+      theSnippet = snippets_file[i].content;
+    }
+  }
 
+  return theSnippet;
+};
+
+// addSnippetToFile(new_snippet) - adds the provided snippet to the snippets file.
+var addSnippetToFile = function AddSnippetToFile(new_snippet){
+  fs.readFile(path.join(__dirname + '/../../content', "snippets.json"), function readFileCallback(err, data) {
+    if (err){
+      console.log(err);
     }
     else{
-      console.log("Error: ID is blank!");
+      var obj = JSON.parse(data);
+      obj.push(new_snippet);
+      //console.log(obj);
+      var json = JSON.stringify(obj);
+      fs.writeFileSync(path.join(__dirname + '/../../content', "snippets.json"), json);
+      console.log(new_snippet.id + " has been added.");
+    }
+  });
+};
+
+// removeSnippetFromFile(snippet_id) - removes a specified snippet ID from the snippets file.
+var removeSnippetFromFile = function removeSnippetFromFile(snippet_id){
+  fs.readFile(path.join(__dirname + '/../../content', "snippets.json"), function readFileCallback(err, data) {
+    if (err){
+      console.log(err);
+    }
+    else{
+      var obj = JSON.parse(data);
+      var filtered_snippets = obj.filter(function(item) {
+         return item.id !== snippet_id;
+      });
+      var json = JSON.stringify(filtered_snippets);
+      fs.writeFileSync(path.join(__dirname + '/../../content', "snippets.json"), json);
+      console.log(snippet_id + " has been removed.");
+    }
+  });
+};
+
+var updateSnippet = function updateSnippet(snippet){
+
+  var snippet_id = snippet.id;
+  var snippet_content = snippet.content;
+
+  // Verify removal
+  var check_snippet = doesSnippetExist(snippet_id);
+
+    // Add updated snippet
+    if (check_snippet == true){
+      fs.readFile(path.join(__dirname + '/../../content', "snippets.json"), function readFileCallback(err, data) {
+        if (err){
+          console.log(err);
+        }
+        else{
+          var obj = JSON.parse(data);
+
+          var theSnippet = "";
+
+          for (var i = 0; i < obj.length; i++){
+            if (obj[i].id == snippet_id){
+              obj[i].content = snippet_content;
+            }
+          }
+
+          var json = JSON.stringify(obj);
+          fs.writeFileSync(path.join(__dirname + '/../../content', "snippets.json"), json);
+          console.log(snippet_id + " has been updated.");
+        }
+      });
+    }
+    else{
+      console.log("Error: original snippet could not be updated!");
+      return false;
+    }
+};
+
+// printSnippet(snippet_id) - replaces the snippet id with the snippet on the user's current application.
+var printSnippet = function printSnippet(snippet_id){
+
+    var snippet = findSnippet(snippet_id);
+
+    // Replace the ID wherever it was typed.
+    for (var i = 0; i < snippet_id.length; i++){
+      robot.keyTap("backspace");
     }
 
-    clearID();
-  }
-});
+    // Print the snippet (accounting for line returns)
+    for (var i = 0; i < snippet.length; i++){
+      if (String.raw`${snippet[i]}`.charCodeAt(0) == 10){
+          robot.keyTap("enter");
+      }
+      else {
+        //console.log("Character: " + String.raw`${snippet[i]}`);
+        robot.typeString(snippet[i]);
+      }
+    }
+};
 
-
-function validateKey(keycode, keymap){
-  return _isContains(keymap, keycode);
-}
-
-function _isContains(json, value) {
-    let contains = false;
-    Object.keys(json).some(key => {
-        contains = typeof json[key] === 'object' ? _isContains(json[key], value) : json[key] === value;
-         return contains;
-    });
-    return contains;
- }
-
- function convertKeyCodeToValue(keycode, keymap){
-   var keyvalue = "";
-
-   for (var i = 0; i < keymap.length; i++){
-     if (keymap[i].keycode == keycode){
-       keyvalue = keymap[i].key;
-     }
-   }
-
-   return keyvalue;
- }
-
-var getToggleStatus = (function getToggleStatus(){
-  return listening_active;
-});
-
- function clearID(){
-   current_snippet_id = "";
- }
-
-// Start IO Hook
-io.start();
-
-module.exports.getToggleStatus = getToggleStatus;
+// Module Exports - to access the functions outside of the file.
+module.exports.getSnippetsFile = getSnippetsFile;
+module.exports.doesSnippetExist = doesSnippetExist;
+module.exports.addSnippetToFile = addSnippetToFile;
+module.exports.updateSnippet = updateSnippet;
+module.exports.removeSnippetFromFile = removeSnippetFromFile;
+module.exports.findSnippet = findSnippet;
+module.exports.printSnippet = printSnippet;
