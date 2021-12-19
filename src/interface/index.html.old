@@ -1,0 +1,59 @@
+<!--
+	Texpansion User Interface
+	(c)2020-2021 Trevor D. Brown. All rights reserved.
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Texpansion</title>
+		<link rel="stylesheet" type="text/css" href="./shared/datatables/css/jquery.dataTables.min.css" />
+		<link rel="stylesheet" type="text/css" href="./css/texpansion.css" />
+		<script src="./shared/jquery/jquery.min.js"></script>
+		<script src="./shared/datatables/js/jquery.dataTables.min.js"></script>
+		<script src="./shared/datatables/js/dataTables.dataTables.min.js"></script>
+		<script src="./js/texpansion.js"></script>
+	</head>
+
+	<body>
+		<div id="top">
+			<h1>Texpansion</h1>
+			<h2 id="toggleStatus"></h2>
+		</div>
+
+		<!--
+		New Snippet Section - add a new snippet.
+		-->
+		<div class="content">
+			<div id="new_entry_section">
+				<h2>Add/Edit Snippet</h2>
+				<div id="new_entry_form">
+					<div id="snippet_id_section">
+						<label>ID: </label><input id="snippet_id" type="textarea" placeholder="ID goes here..."/>
+					</div>
+					<div id="snippet_content_section">
+						<label>Content: </label><textarea id="snippet_content" placeholder="Snippet content goes here..."></textarea>
+					</div>
+					<input id="add_new_snippet" type="button" value="Update" />
+				</div>
+			</div>
+		</div>
+
+		<!--
+		My Snippets - Displays your snippets
+		-->
+		<div class="content">
+			<div id="all_snippets_section">
+				<h2>My Snippets</h2>
+				<div id="all_snippets">
+				<!--Snippets will load here at runtime.-->
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			Developed by <a href="https://github.com/TrevorDBrown" target="_blank">Trevor D. Brown</a> and <a href="" id='credits'>others</a>. Distributed with the <a href="https://github.com/TrevorDBrown/Texpansion/blob/master/LICENSE" target="_blank">MIT License</a>
+		</footer>
+
+	</body>
+</html>

@@ -1,18 +1,39 @@
 {
-  "name": "Texpansion",
-  "version": "0.1.0",
-  "description": "A text expansion utility for macOS, Windows, and Linux.",
-  "author": "Trevor D. Brown",
-  "license": "MIT",
-  "main": "app.js",
-  "dependencies": {
-    "express": "^4.16.2",
-    "iohook": "^0.1.13",
-    "node": "^9.7.0",
-    "opn": "^5.2.0",
-    "robotjs": "^0.5.1"
-  },
-  "scripts": {
-    "start": "node ."
-  }
+	"name": "texpansion-node",
+	"version": "0.1.0",
+	"description": "A cross-platform, simplistic text expansion utility.",
+	"main": "bin/app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "npm run deleteBin && tsc && npm run copyUI && npm run copyPrivate && npm run copyResources",
+		"deleteBin": "rm -rf ./bin/*",
+		"copyUI": "cp -rf ./src/interface/ ./bin/interface",
+		"copyPrivate": "cp -rf ./src/private/ ./bin/private",
+		"copyResources": "cp -rf ./src/resources/ ./bin/resources"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TrevorDBrown/Texpansion-Node.git"
+	},
+	"author": "Trevor D. Brown",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/TrevorDBrown/Texpansion-Node/issues"
+	},
+	"homepage": "https://github.com/TrevorDBrown/Texpansion-Node#readme",
+	"dependencies": {
+		"@fortawesome/fontawesome-free": "^5.15.1",
+		"bootstrap": "^4.5.3",
+		"datatables.net": "^1.10.23",
+		"datatables.net-dt": "^1.10.23",
+		"express": "^4.17.1",
+		"iohook": "^0.7.2",
+		"jquery": "^3.5.1",
+		"opn": "^6.0.0",
+		"robotjs": "^0.6.0"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.9",
+		"typescript": "^4.1.3"
+	}
 }
