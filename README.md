@@ -1,6 +1,9 @@
 # Texpansion
 A text expanding utility for macOS, Windows, and Linux.
 
+## This project is no longer maintained...
+As of March 30th, 2022, I have found a text expansion utility that I really like, called [aText](https://www.trankynam.com/atext/). It handles everything I ever needed in a utility of this nature, and more! As such, I will no longer continue working on this project.
+
 ## Prerequisites
 Texpansion requires Node.js 9.7.1 or higher to run.
  
